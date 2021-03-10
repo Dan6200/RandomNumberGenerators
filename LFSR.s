@@ -3,8 +3,8 @@
 .text
 main:
 	xor %rax,%rax
-	movq $0xa83ef90aa31bcde8, %rax
-	movq $100,%rcx
+	movq $0xa83ef90aa31bcde8, %rax			#...seed
+	movq $100,%rcx					#...make a hundred calls of the same function using its return value as the seed
 rep:
 	pushq %rcx
 	call lfsr
