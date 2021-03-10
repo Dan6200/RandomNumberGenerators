@@ -3,8 +3,10 @@
 .text
 main:
 	xor %rax,%rax
+	movq $0xa83ef90aa31bcde8, %rax
+	movq $100,%rcx
 	movq $0xa83ef90aa31bcde8, %rax			#...seed
-	movq $100,%rcx					#...make a hundred calls of the same function using its return value as the seed
+	movq $100,%rcx							#...make a hundred calls of the same function using its return value as the seed
 rep:
 	pushq %rcx
 	call lfsr
@@ -16,12 +18,13 @@ lfsr:
 	movq %rax, %rbx
 	movq %rax, %rcx
 	movq %rax, %rdx
-	shl $63, %rbx 
-	shl $31, %rcx 
-	shl $20, %rdx 
+	# x^44 + x^33 + x + 1 (mod 2)
+	shr $63, %rbx 
+	shr $31, %rcx 
+	shr $20, %rdx 
 	xor %rdx, %rcx
 	xor %rcx, %rbx
-	shld $1, %rbx, %rax
+	shrd $1, %rbx, %rax
 	movq $fmt, %rdi
 	movq %rax, %rsi
 	pushq %rax
