@@ -8,9 +8,9 @@ main:
 	mov start_state, %rax				#...Seed. Must NOT be Zero!
 	movq $0,%rcx						
 
-#	2^64 - 1 is Large! To check if it's a random number and not just and infinite loop
-# 	...stop at an arbitary number of cycle like 2^36 and see if the current value 
-# 	...is different from it start state
+#	2^64 - 1 is too Large! To check if it's a random number and not just and infinite loop
+# 	...stop at an arbitary number of cycles like 2^36 and see if the current value 
+# 	...is different from it's start state
 	movq $0xFFFFFFFFF, %rdx			    #...Check infinite loops, stop at 2^36
 
 # loop to count how many different none repeating random numbers
