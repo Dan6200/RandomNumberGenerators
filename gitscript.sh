@@ -1,3 +1,3 @@
 git add .
-git commit -m "LFSR proj"
+git commit -m "LFSR Project"
 git push
