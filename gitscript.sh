@@ -1,3 +1,3 @@
 git add .
-git commit -m "CP log"
+git commit -m "LFSR proj"
 git push
