@@ -6,7 +6,7 @@
 main:
 	xor %rax,%rax
 	mov start_state, %rax				#...seed
-	movq $0,%rcx						#...make a hundred calls of the same function using its return value as the seed
+	movq $0,%rcx						
 
 #	2^64 - 1 is Large! To check if it's a random number and not just and infinite loop
 # 	...stop at an arbitary number of cycle like 2^36 and see if the current value 
@@ -16,7 +16,9 @@ main:
 # loop to count how many different none repeating random numbers
 rep:
 	pushq %rcx
-	call lfsr
+#	Repetitively make calls of the same function using its return value as the seed.
+#	Stop when the seed value repeats or at some arbitrary length.
+	call lfsr							
 	popq %rcx
 	inc %rcx
 	cmp %rcx, %rdx
