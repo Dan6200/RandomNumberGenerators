@@ -5,7 +5,7 @@
 .text
 main:
 	xor %rax,%rax
-	mov start_state, %rax				#...seed
+	mov start_state, %rax				#...Seed. Must NOT be Zero!
 	movq $0,%rcx						
 
 #	2^64 - 1 is Large! To check if it's a random number and not just and infinite loop
