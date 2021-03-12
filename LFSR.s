@@ -1,5 +1,5 @@
 .global main
-
+#	Convert to 8 bits and debug
 .text
 main:
 	xor %rax,%rax
@@ -13,16 +13,13 @@ rep:
 	ret
 
 lfsr:
-	movq %rax, %rbx
 	movq %rax, %rcx
 	movq %rax, %rdx
-	# x^44 + x^33 + x + 1 (mod 2)
-	shr $63, %rbx 
-	shr $31, %rcx 
+	# x^44 + x^32 + 1 (mod 2)
+	shr $32, %rcx 
 	shr $20, %rdx 
 	xor %rdx, %rcx
-	xor %rcx, %rbx
-	shrd $1, %rbx, %rax
+	shrd $1, %rcx, %rax
 	movq $fmt, %rdi
 	movq %rax, %rsi
 	pushq %rax
