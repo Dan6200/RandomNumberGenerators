@@ -1,5 +1,6 @@
 .global main
 # Directive to create a maximal length 64-bit LFSR...
+# With the Polynomial x^64 + x^44 + x^33 + 1 (mod 2)
 # The Random Number seed is repeated after 2^64 - 1 cycles!!!
 
 .text
